@@ -9,7 +9,7 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 public class TranslationImpl implements Serializable{
 	
-	//private ArrayList<String> listeTraduction = null;
+	
 	
 	
 	ArrayList<String> listeTraduction = new ArrayList<String>();
@@ -20,17 +20,10 @@ public class TranslationImpl implements Serializable{
 	public TranslationImpl() {
 		
 		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	/*public void addTranslatedList(Traduction traduction) {
 		
-		translatedList.add(traduction);
 	}
 	
-	public ArrayList<String> getTranslatedList(){
-		return translatedList;
-	}*/
+	
 
 	
 	public void addlisteTraduction(String champ) {

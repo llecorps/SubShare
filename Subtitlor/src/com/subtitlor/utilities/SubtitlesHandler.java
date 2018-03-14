@@ -30,9 +30,7 @@ public class SubtitlesHandler {
 		return originalSubtitles;
 	}
 	
-	public  void setSubtitles() {
-		this.translatedSubtitles=translatedSubtitles;
-	}
+	
 	
 	
 	
