@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.subtitlor.dao.DaoFactory;
+import com.subtitlor.dao.ImplementeurDao;
 import com.subtitlor.dao.TraducteurDao;
 import com.subtitlor.utilities.*;
 
@@ -24,10 +25,12 @@ public class EditSubtitle extends HttpServlet {
 	private static final String FILE_NAME = "/WEB-INF/password_presentation.srt";
 	
     private TraducteurDao traducteurDao;
+	private ImplementeurDao implementeurDao;
     
     public void init() throws ServletException {
         DaoFactory daoFactory = DaoFactory.getInstance();
         this.traducteurDao = daoFactory.getTraducteurDao();
+        //this.implementeurDao = daoFactory.getImplementeurDao();
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,7 +38,9 @@ public class EditSubtitle extends HttpServlet {
 		System.out.println(context.getRealPath(FILE_NAME));
 		SubtitlesHandler subtitles = new SubtitlesHandler(context.getRealPath(FILE_NAME));
 		
-		Traducteur traducteur = new Traducteur();
+		Decoupeur  decoupeur = new Decoupeur(subtitles.getSubtitles());
+		
+		//table texte original ligneDaoArray
 		
 		request.setAttribute("subtitles", subtitles.getSubtitles());
 		//request.setAttribute("traducteur", traducteurDao.lister());
@@ -47,8 +52,8 @@ public class EditSubtitle extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Traducteur traducteur = new Traducteur();
-		TranslationImpl listetraduction= new TranslationImpl();
-		String champ;
+		//TranslationImpl listetraduction= new TranslationImpl();
+		//String champ;
 		
 		
 		String[] tabvalues=request.getParameterValues("champCache");
@@ -56,8 +61,9 @@ public class EditSubtitle extends HttpServlet {
          
         for(int i=0;i<tabvalues.length;i++)
        {
-                  
-        	traducteur.setChamp(tabvalues[i]);
+            //lignedao       
+        	traducteur.setTraduction(tabvalues[i]);
+        	System.out.println("SERVLET :"+traducteur.getTraduction());
         	traducteurDao.ajouter(traducteur);
         	
                     
@@ -67,7 +73,7 @@ public class EditSubtitle extends HttpServlet {
                 
         request.setAttribute("message", message);
                 
-	    request.setAttribute("traducteur", traducteurDao.lister());
+	    //request.setAttribute("traducteur", traducteurDao.lister());
         
         this.getServletContext().getRequestDispatcher("/WEB-INF/edit_subtitle.jsp").forward(request, response);
         

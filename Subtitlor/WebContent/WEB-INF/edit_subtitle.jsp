@@ -7,7 +7,7 @@
 <title>Editer les sous-titres</title>
 </head>
 <body>
-    <form method="post"> 
+    <form method="post" > 
            <input type="submit" style="position:fixed; top: 10px; right: 10px;" />
 	    <table>
 	        <c:forEach items="${ subtitles }" var="line" varStatus="status">
