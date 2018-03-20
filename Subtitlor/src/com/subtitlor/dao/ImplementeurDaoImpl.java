@@ -17,16 +17,21 @@ public class ImplementeurDaoImpl implements ImplementeurDao {
 	        this.daoFactory = daoFactory;
 	    }
 
-	public void ajouterChamp(String implementeur) {
+	public void ajouterChamp(String champ, String time, String chaine1, String chaine2) {
+	
 		
 		Connection connexion = null;
         PreparedStatement preparedStatement = null;
-        System.out.println("INSERT champ =" + implementeur);
+        
 
         try {
             connexion = daoFactory.getConnection();
-            preparedStatement = connexion.prepareStatement("INSERT INTO translation(champ) VALUES(?);");
-            preparedStatement.setString(1,implementeur);
+            preparedStatement = connexion.prepareStatement("INSERT INTO original(champ,time, texteori1, texteori2) VALUES(?,?,?,?);");
+            
+            preparedStatement.setString(1,champ);
+            preparedStatement.setString(2,time);
+            preparedStatement.setString(3,chaine1);
+            preparedStatement.setString(4,chaine2);
             
 
             preparedStatement.executeUpdate();
@@ -35,24 +40,7 @@ public class ImplementeurDaoImpl implements ImplementeurDao {
         }
 	}
 	
-	public void ajouterTime(String implementeur) {
-		
-		Connection connexion = null;
-        PreparedStatement preparedStatement = null;
-        System.out.println("INSERT time =" + implementeur);
-
-        try {
-            connexion = daoFactory.getConnection();
-            preparedStatement = connexion.prepareStatement("INSERT INTO translation(time) VALUES(?);");
-            preparedStatement.setString(1,implementeur);
-            
-
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-	}
-
+	
 	@Override
 	public List<Implementeur> lister() {
 		// TODO Auto-generated method stub

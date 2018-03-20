@@ -16,7 +16,8 @@
 	        	
 	        		<td style="text-align:right;"><c:out value="${ line }" /></td>
 	        		<!-- >td><input type="text" name="line${ status.index }" id="line${ status.index }" size="35" /><c:out value="${ status.index  }" /></td-->
-	        		<td><input type="text" name="champCache" type="hidden"  value="test" size="35" /><c:out value="${ status.index  }" /></td>
+	        		
+	        		<td><input type="text" name="champCache" type="hidden"   size="35" /><c:out value="${ status.index  }" /></td>
 	        	
 	        	</tr>
 	        	

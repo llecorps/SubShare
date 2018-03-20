@@ -27,23 +27,18 @@ public class EditSubtitle extends HttpServlet {
     private TraducteurDao traducteurDao;
 	private ImplementeurDao implementeurDao;
     
-    public void init() throws ServletException {
-        DaoFactory daoFactory = DaoFactory.getInstance();
-        this.traducteurDao = daoFactory.getTraducteurDao();
-        //this.implementeurDao = daoFactory.getImplementeurDao();
-    }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServletContext context = getServletContext();
 		System.out.println(context.getRealPath(FILE_NAME));
 		SubtitlesHandler subtitles = new SubtitlesHandler(context.getRealPath(FILE_NAME));
 		
-		Decoupeur  decoupeur = new Decoupeur(subtitles.getSubtitles());
+		TriOriginal  trioriginal = new TriOriginal(subtitles.getSubtitles());
 		
-		//table texte original ligneDaoArray
+		
 		
 		request.setAttribute("subtitles", subtitles.getSubtitles());
-		//request.setAttribute("traducteur", traducteurDao.lister());
+		
 		
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/edit_subtitle.jsp").forward(request, response);
@@ -51,30 +46,18 @@ public class EditSubtitle extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Traducteur traducteur = new Traducteur();
-		//TranslationImpl listetraduction= new TranslationImpl();
-		//String champ;
 		
 		
 		String[] tabvalues=request.getParameterValues("champCache");
+		
+		TriTraduction  tritraduction = new TriTraduction(tabvalues);
 	
-         
-        for(int i=0;i<tabvalues.length;i++)
-       {
-            //lignedao       
-        	traducteur.setTraduction(tabvalues[i]);
-        	System.out.println("SERVLET :"+traducteur.getTraduction());
-        	traducteurDao.ajouter(traducteur);
-        	
-                    
-       }
      
         String message = "Commit Done !!!!";
                 
         request.setAttribute("message", message);
                 
-	    //request.setAttribute("traducteur", traducteurDao.lister());
-        
+	           
         this.getServletContext().getRequestDispatcher("/WEB-INF/edit_subtitle.jsp").forward(request, response);
         
     }

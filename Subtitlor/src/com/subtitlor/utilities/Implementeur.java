@@ -17,10 +17,9 @@ public class Implementeur {
 	private String texteori;
 	private String chaine1;
 	private String chaine2;
-	//private DaoFactory daoFactory;
-	//private ImplementeurDao implementeurDao;
 	
 	
+	private String str = "none";
 	
         DaoFactory daoFactory = DaoFactory.getInstance();
         
@@ -31,36 +30,27 @@ public class Implementeur {
 
 	public Implementeur (List tableau) {
 		
+		setChamp((String) tableau.get(0));
+		setTime((String) tableau.get(1));
+		setChaine1((String) tableau.get(2));
 		
 		
-		for (int i = 0; i < tableau.size(); i ++) {
+		
+		
+		if( tableau.size() == 3) {
 			
-			if(i == 0) {
-				setChamp((String) tableau.get(0));
-				implementeurDao.ajouterChamp(getChamp());
-			}
-			if(i == 1) {
-				setTime((String) tableau.get(1));
-				//System.out.println(getTime());
-				implementeurDao.ajouterTime(getTime());
-			}
+			setChaine2((String) str);
 			
-			if(i == 2) {
-				
-				setChaine1((String) tableau.get(2));
-				//System.out.println(getChaine1());
-				
-			}
 			
-			if(i == 3) {
-				setChaine2((String) tableau.get(3));
-				//System.out.println(getChaine2());
-			}
+		}else {
+			setChaine2((String) tableau.get(3));
 			
-					
-					
 		}
 		
+		
+		implementeurDao.ajouterChamp(getChamp(),getTime(),getChaine1(),getChaine2());
+		
+				
 	}
 	
 	

@@ -14,26 +14,34 @@ public class TraducteurDaoImpl implements TraducteurDao {
 	    TraducteurDaoImpl(DaoFactory daoFactory) {
 	        this.daoFactory = daoFactory;
 	    }
-
-	    @Override
-	    public void ajouter(Traducteur traducteur) {
-	        Connection connexion = null;
+	    
+	    public void ajouterChamp(String champ, String time, String chaine1, String chaine2) {
+	    	
+			
+			Connection connexion = null;
 	        PreparedStatement preparedStatement = null;
-	        System.out.println("INSERT de TRADUCTEUR =" + traducteur.getTraduction());
+	        
+	       
 
 	        try {
 	            connexion = daoFactory.getConnection();
-	            preparedStatement = connexion.prepareStatement("INSERT INTO translation(textetrad) VALUES(?);");
-	            preparedStatement.setString(1,traducteur.getTraduction());
+	            preparedStatement = connexion.prepareStatement("INSERT INTO traduction(champ,time, textetrad1, textetrad2) VALUES(?,?,?,?);");
+	            
+	            preparedStatement.setString(1,champ);
+	            preparedStatement.setString(2,time);
+	            preparedStatement.setString(3,chaine1);
+	            preparedStatement.setString(4,chaine2);
 	            
 
 	            preparedStatement.executeUpdate();
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
+		}
+	    
 
-	    }
-
+	   
+	    
 	    @Override
 	    public List<Traducteur> lister() {
 	        List<Traducteur> traducteurs = new ArrayList<Traducteur>();
@@ -50,11 +58,11 @@ public class TraducteurDaoImpl implements TraducteurDao {
 	                String champ = resultat.getString("champ");
 	                
 
-	                Traducteur traducteur = new Traducteur();
-	                traducteur.setTraduction(champ);
+	                //Traducteur traducteur = new Traducteur();
+	                //traducteur.setTraduction(champ);
 	                
 
-	                traducteurs.add(traducteur);
+	                //traducteurs.add(traducteur);
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();

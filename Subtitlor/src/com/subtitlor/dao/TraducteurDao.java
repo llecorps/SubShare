@@ -6,7 +6,8 @@ import com.subtitlor.utilities.Traducteur;
 public interface TraducteurDao {
 	   
 	    List<Traducteur> lister();
-		void ajouter(Traducteur traducteur);
+		
+		void ajouterChamp(String champ, String time, String chaine1, String chaine2);
 	}
 
 
