@@ -22,7 +22,14 @@ import com.subtitlor.utilities.*;
 @WebServlet("/EditSubtitle")
 public class EditSubtitle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String FILE_NAME = "/WEB-INF/password_presentation.srt";
+	static //private static final String FILE_NAME = "/WEB-INF/password_presentation.srt";
+	
+	NomFichier nomfiche = new NomFichier();
+    
+	private static final String FILE_NAME = nomfiche.getNomdufichier();
+	
+	
+	private static final String CHEMIN_FICHIERS = "/WEB-INF/"+FILE_NAME;
 	
     private TraducteurDao traducteurDao;
 	private ImplementeurDao implementeurDao;
@@ -30,8 +37,8 @@ public class EditSubtitle extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServletContext context = getServletContext();
-		System.out.println(context.getRealPath(FILE_NAME));
-		SubtitlesHandler subtitles = new SubtitlesHandler(context.getRealPath(FILE_NAME));
+		System.out.println(context.getRealPath(CHEMIN_FICHIERS));
+		SubtitlesHandler subtitles = new SubtitlesHandler(context.getRealPath(CHEMIN_FICHIERS));
 		
 		TriOriginal  trioriginal = new TriOriginal(subtitles.getSubtitles());
 		

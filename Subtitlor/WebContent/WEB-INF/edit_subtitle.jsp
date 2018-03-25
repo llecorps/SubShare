@@ -7,6 +7,7 @@
 <title>Editer les sous-titres</title>
 </head>
 <body>
+ <%@ include file="menu.jsp" %>
     <form method="post" > 
            <input type="submit" style="position:fixed; top: 10px; right: 10px;" />
 	    <table>
@@ -28,13 +29,7 @@
     
     <p><c:out value="${ message }" /> </p>
     
-    <c:forEach var="traducteur" items="${ traducteur }" >
-	     <ul>
-	     <li><c:out value="${ traducteur.champ }" /></li>
-	     </ul>
-	     
-	     
-	 </c:forEach>
+   
 	    
 </body>
 </html>
