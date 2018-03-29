@@ -52,7 +52,7 @@ public class Accueil extends HttpServlet {
         String nomFichier = getNomFichier(part);
         NomFichier nomfiche = new NomFichier();
         nomfiche.setNomdufichier(nomFichier);
-        System.out.println("Nom du Fichier:"+nomfiche.getNomdufichier());
+        System.out.println("Nom du Fichier Accueil:"+nomfiche.getNomdufichier());
         
         
         // Si on a bien un fichier

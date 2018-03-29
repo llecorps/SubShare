@@ -24,12 +24,15 @@ public class EditSubtitle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static //private static final String FILE_NAME = "/WEB-INF/password_presentation.srt";
 	
-	NomFichier nomfiche = new NomFichier();
+	//NomFichier nomfiche = new NomFichier();
+	
+   
+	
     
-	private static final String FILE_NAME = nomfiche.getNomdufichier();
+	//private static final String FILE_NAME = nomfiche.getNomdufichier();
 	
 	
-	private static final String CHEMIN_FICHIERS = "/WEB-INF/"+FILE_NAME;
+	//private static final String CHEMIN_FICHIERS = "/WEB-INF/"+FILE_NAME;
 	
     private TraducteurDao traducteurDao;
 	private ImplementeurDao implementeurDao;
@@ -37,6 +40,9 @@ public class EditSubtitle extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServletContext context = getServletContext();
+		NomFichier nomfiche = new NomFichier();
+		final String FILE_NAME = nomfiche.getNomdufichier();
+		final String CHEMIN_FICHIERS = "/WEB-INF/"+FILE_NAME;
 		System.out.println(context.getRealPath(CHEMIN_FICHIERS));
 		SubtitlesHandler subtitles = new SubtitlesHandler(context.getRealPath(CHEMIN_FICHIERS));
 		
