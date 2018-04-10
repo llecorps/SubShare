@@ -47,6 +47,12 @@ public class Backup extends HttpServlet {
     	
     	traducteurDao.Ecrire();
     	
+
+        String message = "SRT File Saved On Desktop !!!!";
+          
+        request.setAttribute("message", message);
+                
+    	
     	
     	this.getServletContext().getRequestDispatcher("/WEB-INF/backup.jsp").forward(request, response);
     	

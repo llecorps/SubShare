@@ -247,7 +247,7 @@ span.round-tab:hover {
             
   <c:set var="nombre" value="0" />          
          <form method="post" > 
-    <input type="submit" style="position:fixed; top: 400px; right: 100px;" />
+    <input type="submit" style="position:fixed; top: 500px; right: 100px;" />
 	    <table>
 	        <c:forEach items="${ subtitles }" var="line" varStatus="status">
 	        <tr>
@@ -258,22 +258,22 @@ span.round-tab:hover {
 	       
 	        <c:if test="${nombre == 1 }">
 	       			<td style="text-align:right;"><c:out value="CHAMP" /></td>
-	        		<td><input type="text" name="champCache" id="line${ status.index }" value="${ line.champ }" size="70" /><c:out value="Nombre :${nombre}"/></td>
+	        		<td><input type="text" name="champCache" id="line${ status.index }" value="${ line.champ }" size="70" /></td>
 	       	</c:if>
 	       	<c:if test="${nombre == 2 }">
 	       			<td style="text-align:right;"><c:out value="Heure Début" /></td>
-	        		<td><input type="text" name="champCache" id="line${ status.index }" value="${ line.datedeb }" size="70" /><c:out value="Nombre :${nombre}"/></td>
+	        		<td><input type="text" name="champCache" id="line${ status.index }" value="${ line.datedeb }" size="70" /></td>
 	        </c:if>
 	       	 	
 	       	 	<c:if test="${nombre == 3 }">
 	       			<td style="text-align:right;"><c:out value="Heure Fin" /></td>
-	        		<td><input type="text" name="champCache" id="line${ status.index }" value="${ line.datefin }" size="70" /><c:out value="Nombre :${nombre}"/></td>
+	        		<td><input type="text" name="champCache" id="line${ status.index }" value="${ line.datefin }" size="70" /></td>
 	        </c:if>
 	        
 	        <c:if test="${nombre == 4 }">
 	        
-	        		<td style="text-align:right;"><c:out value="${ line.texteori }" /></td>
-	        		<td><input type="text" name="champCache" id="line${ status.index }" value="TEST" size="70" /><c:out value="Nombre :${nombre}"/></td>
+	        		<td style="text-align:right;"><strong><c:out value="${ line.texteori }" /></strong></td>
+	        		<td><input type="text" name="champCache" id="line${ status.index }" value="TEST" size="70" /></td>
 	        </c:if>
 			
 	       <c:if test="${nombre > 4 }">
@@ -296,7 +296,7 @@ span.round-tab:hover {
  
     
     
-    <p><c:out value="${ message }" /> </p>
+    <p style="color:green" ><strong style="text-align:center"><c:out value="${ message }" /> </strong></p>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- Javascript de Bootstrap -->

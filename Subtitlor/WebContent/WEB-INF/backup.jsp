@@ -255,35 +255,35 @@ span.round-tab:hover {
   <div class="container">
  
 <form method="post" > 
-           <input type="submit" style="position:fixed; top: 400px; right: 400px;" />
+           <input type="submit" style="position:fixed; top: 500px; right: 200px;" />
            
 	    <table>
 	        <c:forEach items="${ traductions }" var="line" varStatus="status">
 	       
 	        	<tr>
 	        	
-	        		<td style="text-align:right;"--><c:out value="${ line.champ }" /></td>
+	        		
 	        		       		
 	        		<td><input type="text" name="champCache" type="hidden" value="${ line.champ }"  size="35" /></td>
 	        	
 	        	</tr>
 	        	<tr>
 	        	
-	        		<td style="text-align:right;"--><c:out value="${ line.datedeb }" /></td>
+	        		
 	        		       		
 	        		<td><input type="text" name="champCache" type="hidden" value="${ line.datedeb }"   size="35" /></td>
 	        	
 	        	</tr>
 	        	<tr>
 	        	
-	        		<td style="text-align:right;"--><c:out value="${ line.datefin }" /></td>
+	        		
 	        		       		
 	        		<td><input type="text" name="champCache" type="hidden" value="${ line.datefin }" size="35" /></td>
 	        	
 	        	</tr>
 	        	<tr>
 	        	
-	        		<td style="text-align:right;"--><c:out value="${ line.texteori }" /></td>
+	        		
 	        		       		
 	        		<td><input type="text" name="champCache" type="hidden" value="${ line.textetrad }"  size="35" /></td>
 	        	
@@ -295,6 +295,8 @@ span.round-tab:hover {
 	   
     </form>
    </div> 
+   
+   <p style="color:green" ><strong style="text-align:center"><c:out value="${ message }" /> </strong></p>
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- Javascript de Bootstrap -->

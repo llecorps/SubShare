@@ -61,7 +61,7 @@ public class TraducteurDaoImpl implements TraducteurDao {
 	       try {
 	            connexion = daoFactory.getConnection();
 	            statement = connexion.createStatement();
-	            //resultat = statement.executeQuery("select * from original NATURAL JOIN traduction;");
+	            
 	            resultat = statement.executeQuery("select * from traduction INNER JOIN  original ON traduction.id = original.id;");
 
 	            while (resultat.next()) {
@@ -71,7 +71,7 @@ public class TraducteurDaoImpl implements TraducteurDao {
 	                String texteori = resultat.getString("texteori");
 	                String textetrad = resultat.getString("textetrad");
 	                
-	                System.out.println("TradDaoIMPL : champ"+champ+"-"+datedeb+"-"+datefin+"-"+texteori+"-"+textetrad);
+	            
 	                               
 	                ListerTraduction listraduction = new ListerTraduction();
 	                listraduction.setChamp(champ);
@@ -116,24 +116,10 @@ public class TraducteurDaoImpl implements TraducteurDao {
 		                
 		                String[] tabdata = { champ,datedeb, datefin, textetrad};
 		                		
-		                /*
-		                ListeEcriture listeecriture = new ListeEcriture();
-		                listeecriture.setChamp(champ);
-		                listeecriture.setTime(time);
-		                listeecriture.setTextetrad1(textetrad1);
-		                listeecriture.setTextetrad2(textetrad2);*/
+		               
 		                
 		                try {
-				        	/*
-							oos = new ObjectOutputStream(
-							        new BufferedOutputStream(
-							          new FileOutputStream(
-							            new File("testbck2.srt"))));
-							
-							oos.writeObject(listeecriture.getChamp());
-							oos.writeObject(listeecriture.getTime());
-							oos.writeObject(listeecriture.getTextetrad1());
-							oos.writeObject(listeecriture.getTextetrad2());*/
+				        	
 		                	FileWriter fw = new FileWriter (f,true);
 							
 		                	for (String s : tabdata)
@@ -144,15 +130,14 @@ public class TraducteurDaoImpl implements TraducteurDao {
 		                	fw.close();
 				        	 
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
+							
 							e.printStackTrace();
 						}
 				        
+		                           
 		                
 		                
 		                
-		                
-		                //traduction.add(listeecriture);
 		            }
 		            
 		            
@@ -161,22 +146,7 @@ public class TraducteurDaoImpl implements TraducteurDao {
 		            e.printStackTrace();
 		        }
 		        
-		        
-		        /*
-		        for (int i = 0; i < traduction.size(); i ++)
-	    		{
-		        	try {
-						oos.writeObject(traduction.get(i));
-		        		
-		        		
-		        		
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-	            	
-	    		}*/
-		        
+		      
 		        
 		       
 		        

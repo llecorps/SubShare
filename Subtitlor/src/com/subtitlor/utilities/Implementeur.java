@@ -1,5 +1,6 @@
 package com.subtitlor.utilities;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class Implementeur {
 	private String chaine2;
 	
 	
-	private String str = "none";
+	private String str = "";
 	
     DaoFactory daoFactory = DaoFactory.getInstance();
         
@@ -41,7 +42,7 @@ public class Implementeur {
 		
 		if( tableau.size() == 3) {
 			
-			setChaine2((String) str);
+			//setChaine2((String) str);
 			
 			
 		}else {
@@ -50,8 +51,13 @@ public class Implementeur {
 		}
 		
 		
-		//implementeurDao.ajouterChamp(getChamp(),getTime(),getChaine1(),getChaine2());
-		implementeurDao.ajouterChamp(getChamp(),getDatedeb(),getDatefin(),getChaine1(),getChaine2());
+		
+		try {
+			implementeurDao.ajouterChamp(getChamp(),getDatedeb(),getDatefin(),getChaine1(),getChaine2());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 				
 	}
@@ -103,10 +109,7 @@ public class Implementeur {
 	public String getDatefin() {
 		return datefin;
 	}
-/*
-	public void setTime(String time) {
-		this.time = time;
-	}*/
+
 	public void setTime(String time) {
 		String[] results = time.split("-->");
 		this.datedeb = results[0];

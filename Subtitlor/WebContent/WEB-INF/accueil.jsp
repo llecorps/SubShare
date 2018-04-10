@@ -251,7 +251,7 @@ span.round-tab:hover {
                     </div>
                     <div class="tab-pane" role="tabpanel" id="complete">
                         <h3>Complete</h3>
-                        <p>You have successfully completed all steps.</p>
+                        <p >You have successfully completed all steps.</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -269,7 +269,7 @@ span.round-tab:hover {
 
 
 <div class="container">
-    <c:if test="${ !empty fichier }"><p><c:out value="File ${ fichier } (${ description }) has been uploaded !" /></p></c:if>
+    <c:if test="${ !empty fichier }"><p style="color:green" ><strong><c:out value="File ${ fichier } (${ description }) has been uploaded !" /></p></strong></c:if>
     <form method="post" action="accueil" enctype="multipart/form-data">
         <p>
             <label for="description">Description of file : </label>

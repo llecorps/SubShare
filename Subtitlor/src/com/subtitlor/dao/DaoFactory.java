@@ -8,6 +8,8 @@ public class DaoFactory {
     private String url;
     private String username;
     private String password;
+    static DaoFactory instance = null;
+    private static Connection connect;
 
     DaoFactory(String url, String username, String password) {
         this.url = url;
@@ -22,13 +24,19 @@ public class DaoFactory {
 
         }
 
-        DaoFactory instance = new DaoFactory(
+if (instance == null) {
+         instance = new DaoFactory(
                 "jdbc:mysql://localhost:3306/subshare", "admin", "123");
+} 
         return instance;
     }
 
     public Connection getConnection() throws SQLException {
+    	
+    	if(connect == null){
         return DriverManager.getConnection(url, username, password);
+    	}
+		return null;
     }
 
     // Récupération du Dao
