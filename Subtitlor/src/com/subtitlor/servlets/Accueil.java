@@ -26,13 +26,13 @@ public class Accueil extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     public static final int TAILLE_TAMPON = 10240;
-    //public static final String CHEMIN_FICHIERS = "/home/esspressoh/Public/";
+    
     public static final String CHEMIN_FICHIERS = "/WEB-INF/";
     
        
     public Accueil() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,29 +41,28 @@ public class Accueil extends HttpServlet {
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
     	ServletContext context = getServletContext();
-        // On récupère le champ description comme d'habitude
+        
         String description = request.getParameter("description");
         request.setAttribute("description", description );
 
-        // On récupère le champ du fichier
+        
         Part part = request.getPart("fichier");
             
-        // On vérifie qu'on a bien reçu un fichier
+        
         String nomFichier = getNomFichier(part);
         NomFichier nomfiche = new NomFichier();
         nomfiche.setNomdufichier(nomFichier);
         System.out.println("Nom du Fichier Accueil:"+nomfiche.getNomdufichier());
         
         
-        // Si on a bien un fichier
+        
         if (nomFichier != null && !nomFichier.isEmpty()) {
             String nomChamp = part.getName();
-            // Corrige un bug du fonctionnement d'Internet Explorer
+            
              nomFichier = nomFichier.substring(nomFichier.lastIndexOf('/') + 1)
                     .substring(nomFichier.lastIndexOf('\\') + 1);
 
-            // On écrit définitivement le fichier sur le disque
-            //ecrireFichier(part, nomFichier, CHEMIN_FICHIERS);
+           
             ecrireFichier(part, nomFichier,context.getRealPath(CHEMIN_FICHIERS));
 
             request.setAttribute(nomChamp, nomFichier);
@@ -75,7 +74,7 @@ public class Accueil extends HttpServlet {
     private void ecrireFichier( Part part, String nomFichier, String chemin ) throws IOException {
         BufferedInputStream entree = null;
         BufferedOutputStream sortie = null;
-        //System.out.println("Part:" + part +"-nom fichier:"+ nomFichier+"-Chemin:"+chemin);
+        
         try {
             entree = new BufferedInputStream(part.getInputStream(), TAILLE_TAMPON);
             sortie = new BufferedOutputStream(new FileOutputStream(new File(chemin + nomFichier)), TAILLE_TAMPON);

@@ -269,23 +269,23 @@ span.round-tab:hover {
 	        	</tr>
 	        	<tr>
 	        	
-	        		<td style="text-align:right;"--><c:out value="${ line.time }" /></td>
+	        		<td style="text-align:right;"--><c:out value="${ line.datedeb }" /></td>
 	        		       		
-	        		<td><input type="text" name="champCache" type="hidden" value="${ line.time }"   size="35" /></td>
+	        		<td><input type="text" name="champCache" type="hidden" value="${ line.datedeb }"   size="35" /></td>
 	        	
 	        	</tr>
 	        	<tr>
 	        	
-	        		<td style="text-align:right;"--><c:out value="${ line.texteori1 }" /></td>
+	        		<td style="text-align:right;"--><c:out value="${ line.datefin }" /></td>
 	        		       		
-	        		<td><input type="text" name="champCache" type="hidden" value="${ line.textetrad1 }" size="35" /></td>
+	        		<td><input type="text" name="champCache" type="hidden" value="${ line.datefin }" size="35" /></td>
 	        	
 	        	</tr>
 	        	<tr>
 	        	
-	        		<td style="text-align:right;"--><c:out value="${ line.texteori2 }" /></td>
+	        		<td style="text-align:right;"--><c:out value="${ line.texteori }" /></td>
 	        		       		
-	        		<td><input type="text" name="champCache" type="hidden" value="${ line.textetrad2 }"  size="35" /></td>
+	        		<td><input type="text" name="champCache" type="hidden" value="${ line.textetrad }"  size="35" /></td>
 	        	
 	        	</tr>
 	        	

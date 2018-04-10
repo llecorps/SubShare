@@ -24,22 +24,22 @@ public class TraducteurDaoImpl implements TraducteurDao {
 	        this.daoFactory = daoFactory;
 	    }
 	    
-	    public void ajouterChamp(String champ, String time, String chaine1, String chaine2) {
+	    public void ajouterChamp(String champ, String datedeb, String datefin, String textetrad) {
 	    	
 			
 			Connection connexion = null;
 	        PreparedStatement preparedStatement = null;
 	        
-	       
+	     
 
 	        try {
 	            connexion = daoFactory.getConnection();
-	            preparedStatement = connexion.prepareStatement("INSERT INTO traduction(champ,time, textetrad1, textetrad2) VALUES(?,?,?,?);");
+	            preparedStatement = connexion.prepareStatement("INSERT INTO traduction(champ,datedeb,datefin, textetrad) VALUES(?,?,?,?);");
 	            
 	            preparedStatement.setString(1,champ);
-	            preparedStatement.setString(2,time);
-	            preparedStatement.setString(3,chaine1);
-	            preparedStatement.setString(4,chaine2);
+	            preparedStatement.setString(2,datedeb);
+	            preparedStatement.setString(3,datefin);
+	            preparedStatement.setString(4,textetrad);
 	            
 
 	            preparedStatement.executeUpdate();
@@ -61,24 +61,25 @@ public class TraducteurDaoImpl implements TraducteurDao {
 	       try {
 	            connexion = daoFactory.getConnection();
 	            statement = connexion.createStatement();
-	            resultat = statement.executeQuery("select * from original NATURAL JOIN traduction;");
+	            //resultat = statement.executeQuery("select * from original NATURAL JOIN traduction;");
+	            resultat = statement.executeQuery("select * from traduction INNER JOIN  original ON traduction.id = original.id;");
 
 	            while (resultat.next()) {
 	                String champ = resultat.getString("champ");
-	                String time = resultat.getString("time");
-	                String texteori1 = resultat.getString("texteori1");
-	                String texteori2 = resultat.getString("texteori2");
-	                String textetrad1 = resultat.getString("textetrad1");
-	                String textetrad2 = resultat.getString("textetrad2");
+	                String datedeb = resultat.getString("datedeb");
+	                String datefin = resultat.getString("datefin");
+	                String texteori = resultat.getString("texteori");
+	                String textetrad = resultat.getString("textetrad");
 	                
+	                System.out.println("TradDaoIMPL : champ"+champ+"-"+datedeb+"-"+datefin+"-"+texteori+"-"+textetrad);
 	                               
 	                ListerTraduction listraduction = new ListerTraduction();
 	                listraduction.setChamp(champ);
-	                listraduction.setTime(time);
-	                listraduction.setTexteori1(texteori1);
-	                listraduction.setTexteori2(texteori2);
-	                listraduction.setTextetrad1(textetrad1);
-	                listraduction.setTextetrad2(textetrad2);
+	                listraduction.setDatedeb(datedeb);
+	                listraduction.setDatefin(datefin);
+	                listraduction.setTexteori(texteori);
+	                listraduction.setTextetrad(textetrad);
+	                
 	                
 	                traducteurs.add(listraduction);
 	            }
@@ -109,11 +110,11 @@ public class TraducteurDaoImpl implements TraducteurDao {
 
 		            while (resultat.next()) {
 		                String champ = resultat.getString("champ");
-		                String time = resultat.getString("time");
-		                String textetrad1 = resultat.getString("textetrad1");
-		                String textetrad2 = resultat.getString("textetrad2");
+		                String datedeb = resultat.getString("datedeb");
+		                String datefin = resultat.getString("datefin");
+		                String textetrad = resultat.getString("textetrad");
 		                
-		                String[] tabdata = { champ,time, textetrad1, textetrad2};
+		                String[] tabdata = { champ,datedeb, datefin, textetrad};
 		                		
 		                /*
 		                ListeEcriture listeecriture = new ListeEcriture();

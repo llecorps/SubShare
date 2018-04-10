@@ -25,10 +25,7 @@ public class EditSubtitle extends HttpServlet {
 	static //private static final String FILE_NAME = "/WEB-INF/password_presentation.srt";
 	
 	//NomFichier nomfiche = new NomFichier();
-	
-   
-	
-    
+	   
 	//private static final String FILE_NAME = nomfiche.getNomdufichier();
 	
 	
@@ -36,21 +33,33 @@ public class EditSubtitle extends HttpServlet {
 	
     private TraducteurDao traducteurDao;
 	private ImplementeurDao implementeurDao;
+	
+	
+	 public void init() throws ServletException {
+	        DaoFactory daoFactory = DaoFactory.getInstance();
+	        this.implementeurDao = daoFactory.getImplementeurDao();
+	        
+	    }
+	       
     
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServletContext context = getServletContext();
 		NomFichier nomfiche = new NomFichier();
 		final String FILE_NAME = nomfiche.getNomdufichier();
+		System.out.println("Nom fichier EDIT:"+FILE_NAME);
 		final String CHEMIN_FICHIERS = "/WEB-INF/"+FILE_NAME;
-		System.out.println(context.getRealPath(CHEMIN_FICHIERS));
-		SubtitlesHandler subtitles = new SubtitlesHandler(context.getRealPath(CHEMIN_FICHIERS));
+		//System.out.println(context.getRealPath(CHEMIN_FICHIERS));
+		//System.out.println(context.getRealPath(FILE_NAME));
+		//SubtitlesHandler subtitles = new SubtitlesHandler(context.getRealPath(CHEMIN_FICHIERS));
+		SubtitlesHandler subtitles = new SubtitlesHandler(FILE_NAME);
 		
 		TriOriginal  trioriginal = new TriOriginal(subtitles.getSubtitles());
 		
 		
 		
-		request.setAttribute("subtitles", subtitles.getSubtitles());
+		//request.setAttribute("subtitles", subtitles.getSubtitles());
+		request.setAttribute("subtitles", implementeurDao.lister());
 		
 		
 		

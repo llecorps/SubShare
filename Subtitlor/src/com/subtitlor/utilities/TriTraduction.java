@@ -10,7 +10,7 @@ public class TriTraduction {
 	
 	private String chaine;
 	List tableau = new ArrayList();
-	
+	private int occ = 0;
 	
 	
 	public TriTraduction (String[] tabvalues) {
@@ -22,17 +22,18 @@ public class TriTraduction {
 			
 			
 			chaine = tradSubtitles[i];
-			if(!chaine.equals("")) {
-				
-				
-				tableau.add(chaine);
-				
-			}else {
-				
+			occ ++;	
+			tableau.add(chaine);
+					
+			if( occ == 4) {
+						
+						
 				Traducteur traducteur = new Traducteur(tableau);
 				tableau.clear();
+				occ = 0;
 				
 			}
+		
 			
 		}
 		

@@ -12,7 +12,8 @@ public interface TraducteurDao {
 	    
 	    List<ListerTraduction> lister();
 	    List<ListeEcriture> Ecrire();
-		void ajouterChamp(String champ, String time, String chaine1, String chaine2);
+		//void ajouterChamp(String champ, String time, String chaine1, String chaine2);
+		void ajouterChamp(String champ, String datedeb, String datefin, String textetrad);
 	}
 
 

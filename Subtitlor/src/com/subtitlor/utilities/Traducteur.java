@@ -12,10 +12,10 @@ public class Traducteur {
 	
 	
 	private static String champ;
-	private String time;
-	private String texteori;
-	private String chaine1;
-	private String chaine2;
+	private String datedeb;
+	private String datefin;
+	private String textetrad;
+	
 	
 	
 	private String str = "none";
@@ -30,79 +30,71 @@ public class Traducteur {
 	public Traducteur (List tableau) {
 		
 		setChamp((String) tableau.get(0));
-		setTime((String) tableau.get(1));
-		setChaine1((String) tableau.get(2));
+		setDatedeb((String) tableau.get(1));
+		setDatefin((String) tableau.get(2));
+		setTextetrad((String) tableau.get(3));
 		
 		
 		
 		
-		if( tableau.size() == 3) {
-			
-			setChaine2((String) str);
-			
-			
-		}else {
-			setChaine2((String) tableau.get(3));
-			
-		}
-		
-		
-		traducteurDao.ajouterChamp(getChamp(),getTime(),getChaine1(),getChaine2());
+		traducteurDao.ajouterChamp(getChamp(),getDatedeb(),getDatefin(),getTextetrad());
 		
 				
 	}
 	
 	
-	
-	
-	public String getChaine1() {
-		return chaine1;
-	}
-
-
-
-	public void setChaine1(String chaine1) {
-		this.chaine1 = chaine1;
-	}
-
-
-
-	public String getChaine2() {
-		return chaine2;
-	}
-
-
-
-	public void setChaine2(String chaine2) {
-		this.chaine2 = chaine2;
-	}
-
-
-	
-	
-	public  String getChamp() {
-		
+	public static String getChamp() {
 		return champ;
 	}
 
-	public void setChamp(String champ) {
-		this.champ = champ;
+
+
+
+	public static void setChamp(String champ) {
+		Traducteur.champ = champ;
 	}
 
-	public String getTime() {
-		return time;
+
+
+
+	public String getDatedeb() {
+		return datedeb;
 	}
 
-	public void setTime(String time) {
-		this.time = time;
+
+
+
+	public void setDatedeb(String datedeb) {
+		this.datedeb = datedeb;
 	}
 
-	public String getTexteori() {
-		return texteori;
+
+
+
+	public String getDatefin() {
+		return datefin;
 	}
 
-	public void setTexteori(String texteori) {
-		this.texteori = texteori;
+
+
+
+	public void setDatefin(String datefin) {
+		this.datefin = datefin;
 	}
 
+
+
+
+	public String getTextetrad() {
+		return textetrad;
+	}
+
+
+
+
+	public void setTextetrad(String textetrad) {
+		this.textetrad = textetrad;
+	}
+	
+	
 }

@@ -14,6 +14,8 @@ public class Implementeur {
 	
 	private static String champ;
 	private String time;
+	private String datedeb;
+	private String datefin;
 	private String texteori;
 	private String chaine1;
 	private String chaine2;
@@ -21,7 +23,7 @@ public class Implementeur {
 	
 	private String str = "none";
 	
-        DaoFactory daoFactory = DaoFactory.getInstance();
+    DaoFactory daoFactory = DaoFactory.getInstance();
         
 	ImplementeurDao implementeurDao = daoFactory.getImplementeurDao();
   
@@ -48,7 +50,8 @@ public class Implementeur {
 		}
 		
 		
-		implementeurDao.ajouterChamp(getChamp(),getTime(),getChaine1(),getChaine2());
+		//implementeurDao.ajouterChamp(getChamp(),getTime(),getChaine1(),getChaine2());
+		implementeurDao.ajouterChamp(getChamp(),getDatedeb(),getDatefin(),getChaine1(),getChaine2());
 		
 				
 	}
@@ -93,9 +96,21 @@ public class Implementeur {
 	public String getTime() {
 		return time;
 	}
-
+	
+	public String getDatedeb() {
+		return datedeb;
+	}
+	public String getDatefin() {
+		return datefin;
+	}
+/*
 	public void setTime(String time) {
 		this.time = time;
+	}*/
+	public void setTime(String time) {
+		String[] results = time.split("-->");
+		this.datedeb = results[0];
+		this.datefin = results[1];
 	}
 
 	public String getTexteori() {

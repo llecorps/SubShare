@@ -245,31 +245,56 @@ span.round-tab:hover {
 </div>
             
             
-            
- 
- 
- 
- 
- 
- 
-    <form method="post" > 
-           <input type="submit" style="position:fixed; top: 10px; right: 10px;" />
+  <c:set var="nombre" value="0" />          
+         <form method="post" > 
+    <input type="submit" style="position:fixed; top: 400px; right: 100px;" />
 	    <table>
 	        <c:forEach items="${ subtitles }" var="line" varStatus="status">
+	        <tr>
+	        
+	        
+
+	       <c:set var="nombre" value="${nombre + 1 }" /> 
 	       
-	        	<tr>
-	        	
-	        		<td style="text-align:right;"><c:out value="${ line }" /></td>
-	        		<!-- >td><input type="text" name="line${ status.index }" id="line${ status.index }" size="35" /><c:out value="${ status.index  }" /></td-->
-	        		
-	        		<td><input type="text" name="champCache" type="hidden"   size="35" /><c:out value="${ status.index  }" /></td>
-	        	
-	        	</tr>
-	        	
+	        <c:if test="${nombre == 1 }">
+	       			<td style="text-align:right;"><c:out value="CHAMP" /></td>
+	        		<td><input type="text" name="champCache" id="line${ status.index }" value="${ line.champ }" size="70" /><c:out value="Nombre :${nombre}"/></td>
+	       	</c:if>
+	       	<c:if test="${nombre == 2 }">
+	       			<td style="text-align:right;"><c:out value="Heure Début" /></td>
+	        		<td><input type="text" name="champCache" id="line${ status.index }" value="${ line.datedeb }" size="70" /><c:out value="Nombre :${nombre}"/></td>
+	        </c:if>
+	       	 	
+	       	 	<c:if test="${nombre == 3 }">
+	       			<td style="text-align:right;"><c:out value="Heure Fin" /></td>
+	        		<td><input type="text" name="champCache" id="line${ status.index }" value="${ line.datefin }" size="70" /><c:out value="Nombre :${nombre}"/></td>
+	        </c:if>
+	        
+	        <c:if test="${nombre == 4 }">
+	        
+	        		<td style="text-align:right;"><c:out value="${ line.texteori }" /></td>
+	        		<td><input type="text" name="champCache" id="line${ status.index }" value="TEST" size="70" /><c:out value="Nombre :${nombre}"/></td>
+	        </c:if>
+			
+	       <c:if test="${nombre > 4 }">
+			          
+  				<c:set var="nombre" value="0" />
+	        
+	       </c:if>
+	       
+
+     		</tr>
 	    	</c:forEach>
 	    </table>
 	   
-    </form>
+ </form>
+ 
+ 
+ 
+ 
+ 
+ 
+    
     
     <p><c:out value="${ message }" /> </p>
     
