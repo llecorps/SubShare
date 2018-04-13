@@ -1,6 +1,7 @@
 package com.subtitlor.utilities;
 
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -27,7 +28,7 @@ public class Traducteur {
 	
 
 
-	public Traducteur (List tableau) {
+	public Traducteur (List tableau) throws SQLException {
 		
 		setChamp((String) tableau.get(0));
 		setDatedeb((String) tableau.get(1));

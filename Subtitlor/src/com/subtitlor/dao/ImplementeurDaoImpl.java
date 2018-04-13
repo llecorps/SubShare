@@ -29,7 +29,11 @@ public class ImplementeurDaoImpl implements ImplementeurDao {
 		Connection connexion = null;
         PreparedStatement preparedStatement = null;
         
-        String chaine = chaine1 + chaine2;
+        String chaine = chaine1;
+        if( chaine2 != null) {
+        	  chaine += chaine2; 
+        }
+        
         System.out.println("ImplDAO:"+chaine);
         
 

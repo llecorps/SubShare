@@ -2,6 +2,7 @@ package com.subtitlor.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
@@ -72,7 +73,12 @@ public class EditSubtitle extends HttpServlet {
 		
 		String[] tabvalues=request.getParameterValues("champCache");
 		
-		TriTraduction  tritraduction = new TriTraduction(tabvalues);
+		try {
+			TriTraduction  tritraduction = new TriTraduction(tabvalues);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	
      
         String message = "Commit Done !!!!";

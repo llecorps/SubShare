@@ -24,7 +24,7 @@ public class TraducteurDaoImpl implements TraducteurDao {
 	        this.daoFactory = daoFactory;
 	    }
 	    
-	    public void ajouterChamp(String champ, String datedeb, String datefin, String textetrad) {
+	    public void ajouterChamp(String champ, String datedeb, String datefin, String textetrad) throws SQLException {
 	    	
 			
 			Connection connexion = null;
@@ -46,6 +46,8 @@ public class TraducteurDaoImpl implements TraducteurDao {
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
+	        
+	        connexion.close();
 		}
 	    
 
@@ -98,7 +100,7 @@ public class TraducteurDaoImpl implements TraducteurDao {
 		        Statement statement = null;
 		        ResultSet resultat = null;
 		        ObjectOutputStream oos = null;
-		        File f = new File ("testbck2.srt");
+		        File f = new File ("NewFile.srt");
 		        
 			
 		        try {

@@ -133,6 +133,17 @@ span.round-tab:hover {
 .wizard h3 {
     margin-top: 0;
 }
+.conteneurun{
+    
+    display:flex;
+    flex-direction: column;
+    }
+    
+.conteneurdeux{
+    
+    display:flex;
+    flex-direction: row;
+    }
 
 @media( max-width : 585px ) {
 
@@ -159,6 +170,7 @@ span.round-tab:hover {
         position: absolute;
         left: 35%;
     }
+  
 }
 </style>
 </head>
@@ -248,44 +260,39 @@ span.round-tab:hover {
   <c:set var="nombre" value="0" />          
          <form method="post" > 
     <input type="submit" style="position:fixed; top: 500px; right: 100px;" />
-	    <table>
+	    
 	        <c:forEach items="${ subtitles }" var="line" varStatus="status">
-	        <tr>
-	        
+	       
 	        
 
-	       <c:set var="nombre" value="${nombre + 1 }" /> 
+	      
 	       
-	        <c:if test="${nombre == 1 }">
-	       			<td style="text-align:right;"><c:out value="CHAMP" /></td>
-	        		<td><input type="text" name="champCache" id="line${ status.index }" value="${ line.champ }" size="70" /></td>
-	       	</c:if>
-	       	<c:if test="${nombre == 2 }">
-	       			<td style="text-align:right;"><c:out value="Heure Début" /></td>
-	        		<td><input type="text" name="champCache" id="line${ status.index }" value="${ line.datedeb }" size="70" /></td>
-	        </c:if>
-	       	 	
-	       	 	<c:if test="${nombre == 3 }">
-	       			<td style="text-align:right;"><c:out value="Heure Fin" /></td>
-	        		<td><input type="text" name="champCache" id="line${ status.index }" value="${ line.datefin }" size="70" /></td>
-	        </c:if>
-	        
-	        <c:if test="${nombre == 4 }">
-	        
-	        		<td style="text-align:right;"><strong><c:out value="${ line.texteori }" /></strong></td>
-	        		<td><input type="text" name="champCache" id="line${ status.index }" value="TEST" size="70" /></td>
-	        </c:if>
-			
-	       <c:if test="${nombre > 4 }">
-			          
-  				<c:set var="nombre" value="0" />
-	        
-	       </c:if>
+	        <div class="conteneurun" style="display:flex; flex-direction: column; width:50%">
+	       			
+	       				<strong><c:out value="CHAMP" /></strong>
+	       				<input type="text" name="champCache" id="line${ status.index }" value="${ line.champ }" size="35" />
+	        		
+	       
+	       			
+	       				<strong><c:out value="Heure Début" /></strong>
+	        			<input type="text" name="champCache" id="line${ status.index }" value="${ line.datedeb }" size="35" />
+	       			
+	       
+	       			
+	       				<strong><c:out value="Heure Fin" /></strong>
+	        			<input type="text" name="champCache" id="line${ status.index }" value="${ line.datefin }" size="35" />
+	       			
+	       
+	       			
+	        			<p style="color:red"> <strong><c:out value="${ line.texteori }" /></strong></p>
+	        			<input type="text" name="champCache" id="line${ status.index }" value="TEST" size="35" />
+	      			
+	     </div>
 	       
 
-     		</tr>
+     		
 	    	</c:forEach>
-	    </table>
+	    
 	   
  </form>
  

@@ -1,5 +1,6 @@
 package com.subtitlor.utilities;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class TriTraduction {
 	private int occ = 0;
 	
 	
-	public TriTraduction (String[] tabvalues) {
+	public TriTraduction (String[] tabvalues) throws SQLException {
 		
 		String[] tradSubtitles = tabvalues;
 		

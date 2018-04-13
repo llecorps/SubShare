@@ -48,7 +48,7 @@ public class Backup extends HttpServlet {
     	traducteurDao.Ecrire();
     	
 
-        String message = "SRT File Saved On Desktop !!!!";
+        String message = "NewFile.SRT Saved On Desktop !!!!";
           
         request.setAttribute("message", message);
                 

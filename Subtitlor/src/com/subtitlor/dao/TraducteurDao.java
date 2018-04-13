@@ -1,5 +1,6 @@
 package com.subtitlor.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.subtitlor.utilities.ListeEcriture;
@@ -13,7 +14,7 @@ public interface TraducteurDao {
 	    List<ListerTraduction> lister();
 	    List<ListeEcriture> Ecrire();
 		//void ajouterChamp(String champ, String time, String chaine1, String chaine2);
-		void ajouterChamp(String champ, String datedeb, String datefin, String textetrad);
+		void ajouterChamp(String champ, String datedeb, String datefin, String textetrad) throws SQLException;
 	}
 
 
